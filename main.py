@@ -1,6 +1,7 @@
 from jogador.preparacao.cor import *
 from jogador.preparacao.objetivos import *
 from jogador.jogador import Jogador
+from jogador.distribuir_exercito.distribuidor import *
 from jogador.distribuir_exercito.territorios import *
 from fastapi import FastAPI
 app = FastAPI()
@@ -25,6 +26,10 @@ async def get_color(id:int):
 @app.get("/prepara/objetivo")
 async def get_objetivos(id:int):
     return jogadores[id].get_objetivo()
+
+@app.get("/distribui/distribuidor", summary="Distribuir valores aleatórios de um dado para cada cor", description="Distribui valores aleatórios de um dado para cada cor, determina o distribuidor e a ordem dos jogadores.")
+async def distribuidor_route():
+    return distribuidor.distribuir_jogadores()
 
 @app.get("/distribui/territorio")
 async def get_terri(id:int):
