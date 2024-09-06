@@ -30,3 +30,7 @@ async def get_objetivos(id:int):
 async def get_terri(id:int):
     return jogadores[id].get_territorio()
 
+@app.get("/distribui/posicao")
+async def get_posicao(id:int):
+    return 0
+
