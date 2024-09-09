@@ -1,3 +1,5 @@
+
+
 default_colors = {
     1 : "AZUL",
     2 : "BRANCA",
@@ -11,3 +13,5 @@ def buscar_cor(cor_solicitada):
     for i in default_colors.keys():
         if(cor_solicitada == i):
             return default_colors[i]
+    
+
