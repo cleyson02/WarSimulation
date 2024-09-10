@@ -1,5 +1,5 @@
 from random import randint
-from jogador.preparacao.cor import buscar_cor
+
 
 def pegar_posicao(jogadores,id):
     posicao = verificar_posicao(jogadores,sorteio())

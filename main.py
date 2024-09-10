@@ -31,10 +31,9 @@ async def novo_jogador(select_cor:int):
 
 
     ultimo_id += 1
-    create_jogador = Jogador(ultimo_id,buscar_cor(select_cor),buscar_objetivo(),distribuir_terri(),pegar_posicao(jogadores,ultimo_id+1),receber_exercito_inicio())
+    create_jogador = Jogador(ultimo_id,buscar_cor(select_cor),buscar_objetivo(),distribuir_terri(),pegar_posicao(jogadores),receber_exercito_inicio())
     jogadores.append(create_jogador)
-    return (ultimo_id)
-    # return Response(status_code=200)
+    return Response(status_code=201)
 
 @app.get("/num-player")
 async def get_playernum(id:int):
@@ -61,5 +60,5 @@ async def get_qtd_exercito_jogador(id:int):
     return jogadores[id-1].get_qtd_exercito()
 
 @app.get("/show_id")
-async def show_id(id:int):
+async def show_id():
     return jogadores
