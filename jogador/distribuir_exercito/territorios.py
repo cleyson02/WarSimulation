@@ -1,0 +1,47 @@
+from random import randint
+territorios = {
+   1: "Alasca", 
+    2:"Vancouver", 
+    3:"Groenlândia", 
+    4:"Califórnia", 
+    5:"México", 
+    6:"Nova York", 
+    7:"Ottawa", 
+    8:"Islândia", 
+    9:"Reino Unido", 
+    10:"Europa Ocidental", 
+    11:"Europa do Norte", 
+    12:"Europa do Sul", 
+    13:"Escandinávia", 
+    14:"Rússia", 
+    15:"Oriente Médio", 
+    16:"Afeganistão", 
+    17:"Índia", 
+    18:"China", 
+    19:"Mongólia", 
+    20:"Sibéria", 
+    21:"Japão", 
+    22:"Irkutsk", 
+    23:"Kamchatka", 
+    24:"Yakutsk", 
+    25:"Ural", 
+    26:"Sudeste Asiático",
+    27:"Austrália Ocidental", 
+    28:"Austrália Oriental",
+    29:"Nova Guiné",
+    30:"Indonésia", 
+    31:"Madagascar",
+    32:"África do Sul",
+    33:"Congo",
+    34:"África Oriental",
+    35:"Egito", 
+    36:"África do Norte",
+    37:"Brasil",
+    38:"Argentina",
+    39:"Venezuela",
+    40:"Peru"
+}
+
+def distribuir_terri():
+    value = randint(1,40)
+    return territorios[value]
