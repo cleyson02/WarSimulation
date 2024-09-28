@@ -27,8 +27,8 @@ async def novo_jogador(select_cor: int):
             raise HTTPException(status_code=400, detail=f"A cor {cor_escolhida} já foi escolhida por outro jogador.")
 
     ultimo_id += 1
-    criar_jogador = Jogador(ultimo_id, buscar_cor(select_cor), buscar_objetivo(), distribuir_terri(), pegar_posicao(jogadores, id), receber_exercito_inicio())
-    jogadores.append(criar_jogador)
+    create_jogador = Jogador(ultimo_id, buscar_cor(select_cor), buscar_objetivo(), distribuir_terri(), pegar_posicao(jogadores, id), receber_exercito_inicio())
+    jogadores.append(create_jogador)
     return Response(status_code=201)
 
 @app.post("/atacar", summary="Executar ataque", description="Realiza um ataque de um jogador a outro")
@@ -36,8 +36,10 @@ async def atacar(id_atacante: int, id_defensor: int, dados_atacante: int, dados_
     atacante = jogadores[id_atacante - 1]
     defensor = jogadores[id_defensor - 1]
     manipulador = ManipuladorAtaque(atacante, defensor, AtaqueBasico())
-    manipulador.execute_ataque(dados_atacante, dados_defensor)
-    return Response(status_code=200)
+    resultado = manipulador.execute_ataque(dados_atacante, dados_defensor)
+    if resultado["status"] == "erro":
+        raise HTTPException(status_code=400, detail=resultado["mensagem"])
+    return {"mensagem": resultado["mensagem"]}
 
 @app.get("/num-player")
 async def get_playernum(id:int):
